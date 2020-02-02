@@ -5,14 +5,20 @@
   "license": "MIT",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "needle": "^2.4.0"
+    "normalize.css": "^8.0.1",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.8"
   },
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "start": "node src/server.js",
+    "devServer": "nodemon src/server.js",
+    "dev": "parcel src/client/index.html",
+    "build": "pacel build src/client/index.html"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "parcel": "^2.0.0-alpha.3.2"
   }
 }
