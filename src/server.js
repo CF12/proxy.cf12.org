@@ -6,7 +6,7 @@ const { URL } = require('url')
 
 const app = express()
 const port = process.env.PORT || 3000
-const proxyURL = 'http://localhost:3000/proxy?u='
+const proxyURL = '/proxy?u='
 const urlRegex = /(https|https)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/
 // const urlRegex = /^((http|https):\/\/)?([a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+.*)$/gm
 
@@ -19,12 +19,11 @@ const toBase64 = (data) => {
 }
 
 app.use(cors())
-app.use('/', express.static('public'))
+app.use('/', express.static('dist'))
 
 app.use('/proxy', (req, res) => {
   const url = fromBase64(req.query.u)
   const rootUrl = (new URL(url)).origin
-  console.log(url)
 
   if (!url) {
     res.setHeader(404)
@@ -98,6 +97,11 @@ app.use('/proxy', (req, res) => {
         res.end(dataRes.body)
       })
     }
+})
+
+app.get('/robots.txt', (req, res) => {
+    res.type('text/plain')
+    res.send("User-agent: *")
 })
 
 app.listen(port, () => {
