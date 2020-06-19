@@ -45,14 +45,13 @@ app.use('/proxy', (req, res) => {
             $(`[${attr}]`).each((_, el) => {
               el = $(el)
 
-              el.attr(attr, (_, link) => {
-                if (link.includes('data:'))
-                  return link
+              el.attr(attr, (_, data) => {
+                if (data.includes('data:'))
+                  return data
 
-                return proxyURL + toBase64(urlRegex.test(link)
-                  ? link
-                  : rootUrl + link
-                )
+                return data.split(' ').map(el => {
+                  return proxyURL + toBase64(urlRegex.test(el) ? el : rootUrl + el)
+                }).join(' ')
               })
             })
           }
@@ -61,6 +60,7 @@ app.use('/proxy', (req, res) => {
           serialize($, 'href')
           serialize($, 'link')
           serialize($, 'src')
+          serialize($, 'srcset')
 
           $('[integrity]').each((_, el) => {
             $(el).removeAttr('integrity')
