@@ -7,6 +7,9 @@ const url = document.querySelector('.___url-bar__form__url')
 const content = document.querySelector('.___content')
 
 const loadURL = (url) => {
+  if (!url.match(/^(http|https):\/\//g))
+    url = 'https://' + url
+
   console.log('Visiting: ' + url)
 
   urlBar.className += ' ___url-bar--active'
