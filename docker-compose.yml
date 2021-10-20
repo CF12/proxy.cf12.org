@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    networks:
+      - caddy
+    labels:
+      caddy: proxy.cf12.org
+      caddy.reverse_proxy: "{{upstreams 3000}}"
+
+networks:
+  caddy:
+    external: true
