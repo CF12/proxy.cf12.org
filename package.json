@@ -7,7 +7,10 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "node-fetch": "2.*",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "parcel": "^2.0.0",
+    "@parcel/transformer-sass": "^2.0.0",
+    "sass": "^1.43.2"
   },
   "scripts": {
     "start": "node src/server.js",
@@ -16,9 +19,6 @@
     "build": "parcel build src/client/index.html"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0",
-    "nodemon": "^2.0.14",
-    "parcel": "^2.0.0",
-    "sass": "^1.43.2"
+    "nodemon": "^2.0.14"
   }
 }
