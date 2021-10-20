@@ -1,6 +1,8 @@
 import 'normalize.css'
 import './index.scss'
 
+document.querySelector('head > base').setAttribute('href', window.location.origin)
+
 const urlBar = document.querySelector('.___url-bar')
 const form = document.querySelector('.___url-bar__form')
 const url = document.querySelector('.___url-bar__form__url')

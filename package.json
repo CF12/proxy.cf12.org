@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "license": "MIT",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
+    "cheerio": "^1.0.0-rc.10",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "normalize.css": "^8.0.1",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.8"
+    "node-fetch": "2.*",
+    "normalize.css": "^8.0.1"
   },
   "scripts": {
     "start": "node src/server.js",
@@ -17,8 +16,9 @@
     "build": "parcel build src/client/index.html"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2",
-    "parcel": "^2.0.0-alpha.3.2",
-    "sass": "^1.25.0"
+    "@parcel/transformer-sass": "^2.0.0",
+    "nodemon": "^2.0.14",
+    "parcel": "^2.0.0",
+    "sass": "^1.43.2"
   }
 }
